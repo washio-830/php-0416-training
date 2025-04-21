@@ -1,17 +1,25 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once __DIR__ . '/../models/Todo.php';
 
-$todoModel = new Todo();
+class DeleteController
+{
+    public function handle(): void
+    {
+        $id = $_POST['id'] ?? null;
 
-// フォームのデータを取得
-$id = $_POST['id'] ?? null;
+        if (!$id) {
+            header('Location: /php-0416-training/index.php?error=invalid_id');
+            exit;
+        }
 
-// 削除を実行
-$todoModel->delete($id);
+        $todoModel = new Todo();
+        $todoModel->delete($id);
 
-// 一覧ページに戻る
-header('Location: /php-0416-training/index.php');
-exit;
+        header('Location: /php-0416-training/index.php');
+        exit;
+    }
+}
+
+// 実行
+$controller = new DeleteController();
+$controller->handle();
