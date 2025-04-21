@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <title>ToDoリスト</title>
-</head>
-
 <body>
+    <?php if (isset($_GET['error'])): ?>
+        <p class="error">
+            <?php
+            if ($_GET['error'] === 'invalid_id') echo 'ERROR：不正なIDが入力されました。';
+            if ($_GET['error'] === 'not_found') echo 'ERROR：指定されたToDoは見つかりませんでした。URLに誤りがあるか、既に削除されたToDoです。';
+            ?>
+        </p>
+    <?php endif; ?>
+
+
+    <meta charset="UTF-8">
     <h1>ToDoリスト</h1>
+    <h3>ToDo数：<?= $todoCount ?> 件</h3>
+    <title>ToDoリスト</title>
+    <a href="/php-0416-training/views/create.php">
+        <button>新規作成</button>
+    </a>
 </body>
 
-<a href="/php-0416-training/views/create.php">
-    <button>新規作成</button>
-</a>
 <?php foreach ($todos as $todo): ?>
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #ccc;">
         <div>

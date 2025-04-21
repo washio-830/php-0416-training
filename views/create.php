@@ -1,5 +1,5 @@
 <h1>ToDo新規作成</h1>
-<form action="/php-0416-training/controllers/CreateController.php" method="POST">
+<form action="/php-0416-training/controllers/Createcontroller.php" method="POST">
     <label>タイトル：</label><br>
     <input type="text" name="title" required><br><br>
 
