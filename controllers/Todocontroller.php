@@ -1,9 +1,19 @@
 <?php
 require_once __DIR__ . '/../models/Todo.php';
 
-$todo = new Todo();
-$todos = $todo->getAllTodos();
-$todoCount = count($todos);
+class TodoController
+{
+    public function handle(): void
+    {
+        $todoModel = new Todo();
+        $todos = $todoModel->getAllTodos();
+        $todoCount = count($todos);
 
-// ビューに渡す（後述の list.php を読み込む）
-require_once __DIR__ . '/../views/list.php';
+        // ビューに渡す
+        require_once __DIR__ . '/../views/list.php';
+    }
+}
+
+// 実行
+$controller = new TodoController();
+$controller->handle();
