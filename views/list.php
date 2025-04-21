@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>ToDoリスト</title>
@@ -10,6 +11,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <h1>ToDoリスト</h1>
@@ -45,4 +47,5 @@
     <?php endforeach; ?>
 
 </body>
+
 </html>
