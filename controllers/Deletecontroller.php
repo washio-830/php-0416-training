@@ -20,6 +20,5 @@ class DeleteController
     }
 }
 
-// 実行
 $controller = new DeleteController();
 $controller->handle();

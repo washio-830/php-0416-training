@@ -17,7 +17,8 @@
     <?php foreach ($errors as $error): ?>
         <p class="error"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
     <?php endforeach; ?>
-    <a href="/php-0416-training/views/create.php"><button>戻る</button></a>
+    <a href="/php-0416-training/controllers/CreateController.php"><button>戻る</button></a>
+
 </body>
 
 </html>

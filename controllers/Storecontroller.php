@@ -28,6 +28,5 @@ class StoreController
     }
 }
 
-// 実行
 $controller = new StoreController();
 $controller->handle();

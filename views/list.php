@@ -3,16 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ToDoリスト</title>
+
+    <?php if (isset($_GET['error'])): ?>
+        <p class="error">
+            <?php
+            if ($_GET['error'] === 'invalid_id') {
+                echo '不正なIDが入力されました。';
+            } elseif ($_GET['error'] === 'not_found') {
+                echo '指定されたToDoは見つかりませんでした。既に削除された可能性もあります。';
+            }
+            ?>
+        </p>
+    <?php endif; ?>
+
     <style>
         .error {
             color: red;
             font-weight: bold;
         }
     </style>
-</head>
-
-<body>
 
     <h1>ToDoリスト</h1>
 
@@ -22,7 +31,7 @@
 
     <h3>ToDo数：<?= $todoCount ?>件</h3>
 
-    <a href="/php-0416-training/views/create.php">
+    <a href="/php-0416-training/controllers/CreateController.php">
         <button>新規作成</button>
     </a>
 
@@ -47,5 +56,6 @@
     <?php endforeach; ?>
 
 </body>
+
 
 </html>

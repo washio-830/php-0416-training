@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../models/Todo.php';
+require_once __DIR__ . '/../helpers/Validation.php';
 
 class EditController
 {
@@ -21,11 +22,17 @@ class EditController
             exit;
         }
 
-        // ビューに渡す
+        $viewVars = [
+            'todo' => $todo,
+            'maxTitleLength' => Validation::MAX_TITLE_LENGTH,
+            'maxContentLength' => Validation::MAX_CONTENT_LENGTH,
+        ];
+
+        extract($viewVars);
+
         require_once __DIR__ . '/../views/edit.php';
     }
 }
 
-// 実行
 $controller = new EditController();
 $controller->handle();
