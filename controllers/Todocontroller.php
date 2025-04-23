@@ -14,6 +14,5 @@ class TodoController
     }
 }
 
-// 実行
 $controller = new TodoController();
 $controller->handle();

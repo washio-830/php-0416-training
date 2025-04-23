@@ -13,9 +13,19 @@ class UpdateController
         $errors = Validation::validateTodoUpdateInput($id, $title, $content);
 
         if (!empty($errors)) {
+            $todo = (object)[
+                'id' => $id,
+                'title' => $title,
+                'content' => $content
+            ];
+        
+            $maxTitleLength = Validation::MAX_TITLE_LENGTH;
+            $maxContentLength = Validation::MAX_CONTENT_LENGTH;
+        
             require_once __DIR__ . '/../views/errors/update_error.php';
             return;
         }
+        
 
         $todoModel = new Todo();
         $todoModel->update($id, $title, $content);
@@ -25,6 +35,5 @@ class UpdateController
     }
 }
 
-// 実行
 $controller = new UpdateController();
 $controller->handle();

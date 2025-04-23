@@ -40,8 +40,11 @@ class Todo
         $stmt = $this->pdo->prepare("SELECT * FROM todos WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $data ? new TodoEntity($data) : null;
     }
+
 
     public function update($id, $title, $content)
     {
@@ -65,5 +68,23 @@ class Todo
         $stmt = $this->pdo->prepare("DELETE FROM todos WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
+    }
+}
+
+class TodoEntity
+{
+    public int $id;
+    public string $title;
+    public string $content;
+    public string $created_at;
+    public string $updated_at;
+
+    public function __construct(array $data)
+    {
+        $this->id = (int) $data['id'];
+        $this->title = $data['title'];
+        $this->content = $data['content'];
+        $this->created_at = $data['created_at'];
+        $this->updated_at = $data['updated_at'];
     }
 }
